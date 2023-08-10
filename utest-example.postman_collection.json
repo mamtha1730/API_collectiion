@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "861d0413-0962-4199-8f1c-dac2b27a18d0",
+		"name": "collection_mam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25920940",
+		"_collection_link": "https://speeding-flare-417507.postman.co/workspace/UpgradeIT-Training001~69b54011-cff8-4626-8ea5-34b24a82e654/collection/25920940-861d0413-0962-4199-8f1c-dac2b27a18d0?action=share&creator=25920940&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "List of users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a new user_1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var random = Math.random().toString().substring(4);\r",
+							"var firstname= 'ab' + random;\r",
+							"var lastname=random + 'ab';\r",
+							"pm.environment.set(\"firstname_env\",firstname);\r",
+							"pm.environment.set(\"lastname_env\",lastname);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n            \"id\": 16,\r\n            \"email\": \"Kenerji.Mitshuba@reqres.in\",\r\n            \"first_name\": \"{{firstname_env}}\",\r\n            \"last_name\": \"{{lastname_env}}\",\r\n            \"avatar\": \"https://reqres.in/img/faces/16image.jpg\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
